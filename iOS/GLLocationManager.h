@@ -20,6 +20,7 @@ typedef struct {
 -(void)geoLoqalPointLatitude :(double)lat longitude:(double)lon;
 
 @optional
+
 -(void)testCaseName :(NSMutableArray *)testCasenames;
 -(void)createTriggerStatus :(NSString *)triggerStatus;
 -(void)triggerName :(NSMutableArray *)triggerNames; 
@@ -31,22 +32,21 @@ typedef struct {
 
 @property (nonatomic, strong) id<GeoLoqalDelegate> delegate;
 
-// give speed for GeoLoqal SDK
 @property(nonatomic)double speed;
 
 // This is a mandatory property and the value is either json or xml
 @property(nonatomic,strong)NSString *outputType;
 
-// Sequential Polyline unit
+// Unit of test case of type Sequential Polyline 
 @property(nonatomic,strong)NSString *unit;
 
-// setting apikey from http://dev.geoloqal.com/ for GeoLoqal SDK
+// Set API key which will get from http://dev.geoloqal.com/ for GeoLoqal SDK
 +(void)setApiKey:(NSString *)geoloqalApiKey;
 
-// Register to GeoLoqal SDK for ios with an api key 
+// Register with GeoLoqal with a test case
 -(void)registrationWithTestCase:(NSString *)testCaseName;
 
-// get all TestCaseNames for GeoLoqal SDK
+// Get all TestCaseNames for GeoLoqal 
 -(void)getTestCaseNames;
 
 // For Triggers //
@@ -54,8 +54,10 @@ typedef struct {
 // get all Trigger names
 -(void)getTriggerNames;
 
-//method for checking  whether latitude and loangitude points reside inside a particular Trigger
+// Method for checking  trigger matching to a location
 -(void)getCheckedGeoTriggerName:(NSString *)triggerName lat:(NSString *)latitude lon:(NSString *)longitude;
 
+// create a Trigger for "Inside_Circle" trigger type
+-(void)createInsideCircleTrigger:(NSString *)triggerName lat:(NSString *)latitude lon:(NSString *)longitude rad:(int)_radius;
 
 @end
